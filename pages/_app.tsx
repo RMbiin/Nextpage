@@ -7,6 +7,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import Layout from "@/components/Layout";
+import { ThemeProvider } from "styled-components";
+import Theme from "@/styles/theme";
 
 const queryClient = new QueryClient();
 
@@ -16,9 +18,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.results}>
         <ReactQueryDevtools initialIsOpen={true} />
         <RecoilRoot>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <ThemeProvider theme={Theme}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
     </QueryClientProvider>
