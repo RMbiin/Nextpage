@@ -1,4 +1,4 @@
-import { Todo, TodoType } from "@/components/Todo/atom";
+import { Todo, TodoType } from "@/utils/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // POST 투두 리스트
