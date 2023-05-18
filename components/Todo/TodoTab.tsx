@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
-import { TodoType, todoTypeAtom } from "./atom";
+import { todoTypeAtom } from "./atom";
+import { TodoType } from "@/utils";
 
 const Wrapper = styled.div`
   .selected {

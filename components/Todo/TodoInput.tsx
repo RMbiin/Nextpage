@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { Todo, todoTypeAtom } from "./atom";
+import { todoTypeAtom } from "./atom";
 import { useRecoilValue } from "recoil";
-import { useCreateTodo } from "@/utils";
+import { useCreateTodo, Todo } from "@/utils";
 
 const TodoInput = () => {
   const { register, reset, handleSubmit } = useForm();

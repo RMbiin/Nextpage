@@ -1,5 +1,4 @@
-import { Todo, TodoType } from "./atom";
-import { useChangeType, useDeleteTodo } from "@/utils";
+import { useChangeType, useDeleteTodo, Todo, TodoType } from "@/utils";
 
 const TodoItem = (props: Todo) => {
   const { _id, todo, todoType } = props;
