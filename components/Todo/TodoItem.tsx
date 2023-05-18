@@ -1,41 +1,5 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Todo, TodoType } from "./atom";
-
-const mutateTodo = async (todo: Todo) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_API}/api/todo`, {
-    headers: { "Content-Type": "application/json" },
-    method: "PUT",
-    body: JSON.stringify(todo),
-  });
-  const json = await response.json();
-  return json;
-};
-
-const deleteTodo = async (id: string) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_API}/api/todo`, {
-    headers: { "Content-Type": "application/json" },
-    method: "DELETE",
-    body: JSON.stringify({ _id: id }),
-  });
-  const json = response.json();
-  return json;
-};
-
-const useChangeType = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: mutateTodo,
-    onSuccess: () => queryClient.invalidateQueries(["todo"]),
-  });
-};
-
-const useDeleteTodo = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: deleteTodo,
-    onSuccess: () => queryClient.invalidateQueries(["todo"]),
-  });
-};
+import { useChangeType, useDeleteTodo } from "@/utils";
 
 const TodoItem = (props: Todo) => {
   const { _id, todo, todoType } = props;

@@ -1,23 +1,7 @@
 import { useRecoilValue } from "recoil";
-import { TodoType, todoTypeAtom } from "./atom";
+import { todoTypeAtom } from "./atom";
 import TodoItem from "./TodoItem";
-import { useQuery } from "@tanstack/react-query";
-
-const fetchTodo = async (todoType = TodoType.TODO) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACK_API}/api/todo?todoType=${todoType}`
-  );
-  const json = await response.json();
-  return json;
-};
-
-const useTodo = (todoType: TodoType) => {
-  return useQuery({
-    queryKey: ["todo", todoType],
-    queryFn: () => fetchTodo(todoType),
-    staleTime: 3 * 60 * 1000,
-  });
-};
+import { useTodo } from "@/utils";
 
 const ToDoList = () => {
   const todoType = useRecoilValue(todoTypeAtom);
